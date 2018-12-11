@@ -39,9 +39,6 @@
 
 
 
-
-
-
         <script type="text/javascript" src="setUp.js"></script>
 
 
@@ -50,8 +47,8 @@
                 var canvas = document.getElementById('c'); // get canvas
                 var slide = document.getElementById('redSlide');
                 var gl = canvas.getContext("webgl"); // skapa webGlRenderingContext
-
-                // hämta shaders
+var test = 0; 
+                // hämta shaders.
                 var vertexShaderSource = document.getElementById("vert-shader").text;
                 var fragmentShaderSource = document.getElementById("frag-shader").text;
                 //skapa shader
