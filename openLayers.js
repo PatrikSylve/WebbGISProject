@@ -73,37 +73,18 @@
 				serverType: 'geoserver'
 				});
 
+function updateLayers(evt) {
+	var e = target.getElementById();
+	alert e;
 
-
-
-
-// layers kvar att lägga in
-				// 'APAlayers': 'districts_wgs84'  - id=”box2”
-
-				// 'APAlayers': '_wgs84 -  id=”box3”  osv.
-
-
-
-			//	 'APAlayers': 'roads_all_wgs84'
-
-
-			//	 'APAlayers': 'roads_throug_wgs84'
-
-
-
-
-
-
-
+}
 
 			//OpenStreetMap background layer and New York streets layer
       var layers = [
         new ol.layer.Tile({
           source: new ol.source.OSM()
         }),
-		new ol.layer.Image({
-		source: districts
-		}),
+	
         new ol.layer.Image({
           source: public_buildings
 	  	}),
