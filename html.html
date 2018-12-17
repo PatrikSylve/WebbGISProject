@@ -11,7 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<!-- add here more css definition libraries-->
-	
+
 	<link rel="stylesheet" href="libs\openlayers\v4.4.2-dist\ol.css" type="text/css">
 	<!-- Basic CSS definitions -->
 	<style type="text/css">
@@ -71,6 +71,7 @@
 			border-bottom: solid 2px black;
 			border-right: solid 2px black;
 		}
+
 	</style>
 
 	<script src="openLayers.js" type="text/javascript"></script>
@@ -79,15 +80,24 @@
 </head>
 
 <body onload="init()">
-
 	<div class="container">
 		<div class="header-centered">
 			<h2>Map over Lund etc</h2>
 		</div>
-		<!--<div class="toolbar-centered">
-			<input type="checkbox" id="infoToggle" checked onclick="toggleInfo()"> Toggle Info Panel
+		<div class="toolbar-centered">
+			<input type="checkbox" id="box1"  onclick="toggleInfo()"> Layer 1
+			<input type="checkbox" id="box2"  onclick="toggleInfo()"> Layer 2
+			<input type="checkbox" id="box3"  onclick="toggleInfo()"> Layer 3
+			<input type="checkbox" id="box4"  onclick="toggleInfo()"> Layer 4
+			<input type="checkbox" id="box5"  onclick="toggleInfo()"> Layer 5
+			<input type="checkbox" id="box6"  onclick="toggleInfo()"> Layer 6
+			<input type="checkbox" id="box7"  onclick="toggleInfo()"> Layer 7
+
+
 		</div>
-  -->
+
+
+
 		<div id="map">
 			<!--<div id="info">
 				<h4>Properties</h4>
@@ -98,8 +108,12 @@
 
 		</div>
 		<br/>
+
 		<div id="wrapper">
 			<div id="scale-line" class="scale-line"></div>
+		</div>
+		<div>
+			<input id="swipe" type="range" style="width: 100%">
 		</div>
 	</div>
 
@@ -116,5 +130,14 @@
 
 		<!-- Import JQuery -->
 		<script src="libs\jquery\jquery.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </html>
