@@ -22,14 +22,76 @@
 
 
 
-			//The source for the New York streets layer
-      var wmsSource = new ol.source.ImageWMS({
+			//WMS sources
+      var public_buildings = new ol.source.ImageWMS({
           url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
           params: {
-          'LAYERS': 'workspaceName:layerName'
+          'LAYERS': 'APAlayers:public_buildings_wgs84'
             },
             serverType: 'geoserver'
             });
+		var roads_highway = new ol.source.ImageWMS({
+			url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+			params: {
+			'LAYERS': 'APAlayers:roads_highway_wgs84'
+				 },
+				 serverType: 'geoserver'
+				 });
+	 	var adresses = new ol.source.ImageWMS({
+				url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+			 	params: {
+				 'LAYERS': 'addresses_wgs84'
+		 		 },
+				 serverType: 'geoserver'
+				 });
+		 var roads_throug = new ol.source.ImageWMS({
+		 		url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+		 	 	params: {
+		 		'LAYERS': 'roads_throug_wgs84'
+		 		},
+		 		serverType: 'geoserver'
+		 		});
+		var rural_buildings = new ol.source.ImageWMS({
+				url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+				params: {
+				'LAYERS': 'rural_buildings_wgs84'
+				},
+				serverType: 'geoserver'
+				});
+		var districts = new ol.source.ImageWMS({
+				url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+				params: {
+				'LAYERS': 'districts_wgs84'
+				},
+				serverType: 'geoserver'
+				});
+		var railroads = new ol.source.ImageWMS({
+				url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+				params: {
+				'LAYERS': 'railroads_wgs84'
+				},
+				serverType: 'geoserver'
+				});
+
+
+
+
+
+// layers kvar att lägga in
+				// 'APAlayers': 'districts_wgs84'  - id=”box2”
+
+				// 'APAlayers': '_wgs84 -  id=”box3”  osv.
+
+
+
+			//	 'APAlayers': 'roads_all_wgs84'
+
+
+			//	 'APAlayers': 'roads_throug_wgs84'
+
+
+
+
 
 
 
@@ -39,9 +101,28 @@
         new ol.layer.Tile({
           source: new ol.source.OSM()
         }),
+		new ol.layer.Image({
+		source: districts
+		}),
         new ol.layer.Image({
-          source: wmsSource
-        })
+          source: public_buildings
+	  	}),
+	  	new ol.layer.Image({
+		source: roads_highway
+		}),
+		new ol.layer.Image({
+		source: adresses
+		}),
+		new ol.layer.Image({
+		source: roads_throug
+		}),
+		new ol.layer.Image({
+		source: rural_buildings
+		}),
+
+		new ol.layer.Image({
+		source: railroads
+		}),
       ];
 
 
@@ -144,4 +225,3 @@
 				document.getElementById('info').style.display = display
 			}
 		}
-
