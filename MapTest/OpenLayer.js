@@ -151,7 +151,7 @@ var public_buildings = new ol.source.ImageWMS({
         layers: [bingMapsAerial,t0],
         target: 'map',
         view: new ol.View({
-           center: ol.proj.fromLonLat([13.41, 55.55]),
+           center: ol.proj.fromLonLat([13.19, 55.70]),
           zoom: 13
         })
       });
