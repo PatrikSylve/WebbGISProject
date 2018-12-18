@@ -83,18 +83,13 @@ var public_buildings = new ol.source.ImageWMS({
       }),
     ];
 
-    var layers = [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
-      })
-
-     ]
+    
 
 
 
     var map = new ol.Map({
       target: 'map',
-      layers: layers,
+      layers: layers2,
       view: new ol.View({
         center: ol.proj.fromLonLat([13.41, 55.55]),
         zoom: 10
