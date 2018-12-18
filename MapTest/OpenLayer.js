@@ -76,10 +76,10 @@ var public_buildings = new ol.source.ImageWMS({
       source: roads_highway
       }),
       new ol.layer.Image({
-      source: adresses
+      source: roads_throug
       }),
       new ol.layer.Image({
-      source: roads_throug
+      source: roads_all
       }),
       new ol.layer.Image({
       source: rural_buildings
@@ -89,7 +89,7 @@ var public_buildings = new ol.source.ImageWMS({
       source: railroads
       }),
       new ol.layer.Image({
-      source: roads_all
+      source: adresses
       }),
     ];
 
