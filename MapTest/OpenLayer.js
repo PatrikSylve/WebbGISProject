@@ -48,6 +48,13 @@ var railroads = new ol.source.ImageWMS({
     },
     serverType: 'geoserver'
     });
+    var roads_all = new ol.source.ImageWMS({
+        url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+        params: {
+        'LAYERS': 'roads_all_wgs84'
+        },
+        serverType: 'geoserver'
+        });
 
 
 var public_buildings = new ol.source.ImageWMS({
@@ -81,9 +88,12 @@ var public_buildings = new ol.source.ImageWMS({
       new ol.layer.Image({
       source: railroads
       }),
+      new ol.layer.Image({
+      source: roads_all
+      }),
     ];
 
-    
+
 
 
 
