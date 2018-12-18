@@ -149,6 +149,20 @@ var public_buildings = new ol.source.ImageWMS({
 
       var map = new ol.Map({
         layers: [bingMapsAerial,t0],
+        controls: ol.control.defaults({
+          attributionOptions:
+          ({
+      collapsible: false
+      })
+      }).extend([
+      //Extra functionality of the map
+
+
+      //Control for displaying a scale line
+      new ol.control.ScaleLine({
+      target: document.getElementById('scale-line')
+      })
+      ]),
         target: 'map',
         view: new ol.View({
            center: ol.proj.fromLonLat([13.19, 55.70]),
