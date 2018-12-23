@@ -145,10 +145,13 @@ var public_buildings = new ol.source.ImageWMS({
       source: roads_all
       })
 
-      var layers = [t1,t2,t3,t4,t5];
+      var sourceDraw =  new ol.source.Vector();
+      var drawGeometries = new ol.layer.Vector({
+          source: sourceDraw
+    });
 
       var map = new ol.Map({
-        layers: [bingMapsAerial,t0],
+        layers: [bingMapsAerial,t0, drawGeometries],
         controls: ol.control.defaults({
           attributionOptions:
           ({
@@ -190,6 +193,27 @@ var public_buildings = new ol.source.ImageWMS({
         map.render();
       }, false);
 
+
+      // create geometries
+       var typeSelect = document.getElementById('type');
+       var draw;
+       function addInteraction() {
+         var value = typeSelect.value;
+         if (value !== 'None') {
+           var geometryFunction;
+           draw = new ol.interaction.Draw({
+             source: sourceDraw,
+             type: value,
+             geometryFunction: geometryFunction
+           });
+           map.addInteraction(draw);
+         }
+       }
+       typeSelect.onchange = function() {
+         map.removeInteraction(draw);
+         addInteraction();
+       };
+       addInteraction();
     // var map = new ol.Map({
     //   target: 'map',
     //   layers: layers2,
@@ -208,6 +232,11 @@ var public_buildings = new ol.source.ImageWMS({
     //     })
     //   });
     //
+    function removeGeometries() {sourceDraw.clear(true);}
+    function zoomToGeometries(){
+        var extent = sourceDraw.getExtent();
+        map.getView().fit(extent, map.getSize());
+     }
     function addLayer(box) {
         var layerIndex = box.value;
         if(box.checked){
