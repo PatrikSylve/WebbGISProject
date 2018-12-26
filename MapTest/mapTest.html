@@ -62,6 +62,7 @@
 
          .dropdown:hover .dropdown-content {
            display: block;
+          font-family: Arial, Helvetica, sans-serif;
          }
 
 
@@ -72,18 +73,18 @@
   </head>
   <body>
       <div class="header-centered">
-          <h2>Map over Lund etc</h2>
+          <h2>Map over Lund</h2>
       </div>
 
           <ul>
             <li class="dropdown">
                 <a class="dropbtn">Draw</a>
-                <div class="dropdown-content">
-                    <a href="#none" onclick="setGeometry('None')"  class="">none</a>
+                <div id="type" class="dropdown-content">
+                    <a href="#none" onclick="setGeometry('None')"  class="">None</a>
                     <a href="#circle"class="material-icons" onclick="setGeometry('Circle')"  style="font-size:36px">panorama_fish_eye</a>
-                    <a href="#poly"class="fas fa-draw-polygon" onclick="setGeometry('Polygon')"  style="font-size:36px"></a>
-                    <a href="#line"class="material-icons" onclick="setGeometry('LineString')"  style="font-size:36px">linear_scale</a>
-                    <a href="#point"class="far fa-dot-circle" onclick="setGeometry('Point')"  style="font-size:36px"></a>
+                    <a href="#poly"  class="fas fa-draw-polygon" onclick="setGeometry('Polygon')"  style="font-size:36px"></a>
+                    <a href="#line"  class="material-icons" onclick="setGeometry('LineString')"  style="font-size:36px">linear_scale</a>
+                    <a href="#point" class="far fa-dot-circle" onclick="setGeometry('Point')"  style="font-size:36px"></a>
                     <a href="#clear" class="fas fa-eraser" onclick="removeGeometries()"  style="font-size:36px"></a>
                 </div>
             </li>
