@@ -3,50 +3,69 @@
   <head>
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 
-    <style>
+      <style>
       .map {
         height: 400px;
         width: 100%;
       }
-                  .dropbtn {
-            background-color: #00a390;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            }
 
-            .dropdown {
-            position: relative;
-            display: inline-block;
-            }
+              ul {
+           list-style-type: none;
+           margin: 0;
+           padding: 0;
+           overflow: hidden;
+           background-color: #333;
+         }
 
-            .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #00a390;
-            min-width: 100px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            }
+         li {
+           float: left;
+         }
 
-            .dropdown-content a {
-            color: white;
-            padding: 24px 50px;
-            text-decoration: none;
-            display: block;
-            }
+         li a, .dropbtn {
+           display: inline-block;
+           color: white;
+           text-align: center;
+           padding: 14px 16px;
+           text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+         }
 
-            .dropdown-content a:hover {background-color: #ddd;}
+         li a:hover, .dropdown:hover .dropbtn {
+           background-color: #96a3ba;
+         }
 
-            .dropdown:hover .dropdown-content {display: block;}
+         li.dropdown {
+           display: inline-block;
+         }
 
-            .dropdown:hover .dropbtn {background-color: #009382;}
+         .dropdown-content {
+           display: none;
+           position: absolute;
+           background-color: #f9f9f9;
+           min-width: 160px;
+           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+           z-index: 1;
+         }
+
+         .dropdown-content a {
+           color: black;
+           padding: 12px 16px;
+           text-decoration: none;
+           display: block;
+           text-align: left;
+         }
+
+         .dropdown-content a:hover {background-color: #f1f1ff}
+
+         .dropdown:hover .dropdown-content {
+           display: block;
+         }
+
+
+
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <title>OpenLayers example</title>
@@ -55,31 +74,33 @@
       <div class="header-centered">
           <h2>Map over Lund etc</h2>
       </div>
-      <div class="dropdown">
-          <button class="dropbtn">Layers</button>
-          <div class="dropdown-content">
-              <input type="checkbox" id="box1"  value="1"  onclick="addLayer(this)">Public Buildings</input><br>
-              <input type="checkbox" id="box2"  value="2"  onclick="addLayer(this)">Highways </input><br>
-              <input type="checkbox" id="box3"  value="3"  onclick="addLayer(this)">Roads</input><br>
-              <input type="checkbox" id="box4"  value="4"  onclick="addLayer(this)">All roads</input><br>
-              <input type="checkbox" id="box5"  value="5"  onclick="addLayer(this)">Rural Buildings</input><br>
-              <input type="checkbox" id="box6"  value="6"  onclick="addLayer(this)">Railroads</input><br>
-              <input type="checkbox" id="box7"  value="7"  onclick="addLayer(this)">Adresses</input>
-          </div>
-      </div>
-      <div class="dropdown">
-          <button class="dropbtn">Create Geometries</button>
-          <div class="dropdown-content">
-              <select id="type">
-                <option value="Point">Point</option>
-                <option value="LineString">LineString</option>
-                <option value="Polygon">Polygon</option>
-                <option value="Circle">Circle</option>
-                <option value="None">None</option>
-              </select>
-              <button id="clear" onclick="removeGeometries();">Remove Geometries</button>
-          </div>
-      </div>
+
+          <ul>
+            <li class="dropdown">
+                <a class="dropbtn">Draw</a>
+                <div class="dropdown-content">
+                    <a href="#none" onclick="setGeometry('None')"  class="">none</a>
+                    <a href="#circle"class="material-icons" onclick="setGeometry('Circle')"  style="font-size:36px">panorama_fish_eye</a>
+                    <a href="#poly"class="fas fa-draw-polygon" onclick="setGeometry('Polygon')"  style="font-size:36px"></a>
+                    <a href="#line"class="material-icons" onclick="setGeometry('LineString')"  style="font-size:36px">linear_scale</a>
+                    <a href="#point"class="far fa-dot-circle" onclick="setGeometry('Point')"  style="font-size:36px"></a>
+                    <a href="#clear" class="fas fa-eraser" onclick="removeGeometries()"  style="font-size:36px"></a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a class="dropbtn">Layers</a>
+              <div class="dropdown-content">
+                 <input type="checkbox" id="box1"  value="1"  onclick="addLayer(this)">Public Buildings</input><br>
+                        <input type="checkbox" id="box2"  value="2"  onclick="addLayer(this)">Highways </input><br>
+                        <input type="checkbox" id="box3"  value="3"  onclick="addLayer(this)">Roads</input><br>
+                        <input type="checkbox" id="box4"  value="4"  onclick="addLayer(this)">All roads</input><br>
+                        <input type="checkbox" id="box5"  value="5"  onclick="addLayer(this)">Rural Buildings</input><br>
+                        <input type="checkbox" id="box6"  value="6"  onclick="addLayer(this)">Railroads</input><br>
+                        <input type="checkbox" id="box7"  value="7"  onclick="addLayer(this)">Adresses</input>
+              </div>
+            </li>
+          </ul>
+
       <div id="map" class="map"> <br>
         <div id="scale-line" class="scale-line"></div>
       </div>

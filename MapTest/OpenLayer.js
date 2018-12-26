@@ -209,10 +209,17 @@ var public_buildings = new ol.source.ImageWMS({
            map.addInteraction(draw);
          }
        }
-       typeSelect.onchange = function() {
+
+      function onChange() {
+          
          map.removeInteraction(draw);
          addInteraction();
        };
+       function setGeometry(element) {
+           var e = document.getElementById('type');
+           e.value=element;
+           onChange();
+       }
        addInteraction();
     // var map = new ol.Map({
     //   target: 'map',
