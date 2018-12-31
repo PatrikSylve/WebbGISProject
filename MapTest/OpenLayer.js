@@ -211,16 +211,17 @@ var public_buildings = new ol.source.ImageWMS({
        }
 
       function onChange() {
-          
+
          map.removeInteraction(draw);
          addInteraction();
        };
        function setGeometry(element) {
            var e = document.getElementById('type');
            e.value=element;
+           
            onChange();
        }
-       addInteraction();
+
     // var map = new ol.Map({
     //   target: 'map',
     //   layers: layers2,
@@ -239,6 +240,7 @@ var public_buildings = new ol.source.ImageWMS({
     //     })
     //   });
     //
+
     function removeGeometries() {sourceDraw.clear(true);}
     function zoomToGeometries(){
         var extent = sourceDraw.getExtent();
