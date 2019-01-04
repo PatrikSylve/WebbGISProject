@@ -162,10 +162,8 @@ var public_buildings = new ol.source.ImageWMS({
 
 
       //Control for displaying a scale line
-      new ol.control.ScaleLine({
-      target: document.getElementById('scale-line')
-      })
-      ]),
+      new ol.control.ScaleLine() ])
+      ,
         target: 'map',
         view: new ol.View({
            center: ol.proj.fromLonLat([13.19, 55.70]),
@@ -218,7 +216,7 @@ var public_buildings = new ol.source.ImageWMS({
        function setGeometry(element) {
            var e = document.getElementById('type');
            e.value=element;
-           
+
            onChange();
        }
 
