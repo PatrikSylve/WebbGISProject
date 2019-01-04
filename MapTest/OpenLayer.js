@@ -16,42 +16,42 @@ params: {
 var adresses = new ol.source.ImageWMS({
     url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
     params: {
-     'LAYERS': 'addresses_wgs84'
+     'LAYERS': 'APAlayers:addresses_wgs84'
      },
      serverType: 'geoserver'
      });
 var roads_throug = new ol.source.ImageWMS({
     url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
     params: {
-    'LAYERS': 'roads_throug_wgs84'
+    'LAYERS': 'APAlayers:roads_throug_wgs84'
     },
     serverType: 'geoserver'
     });
 var rural_buildings = new ol.source.ImageWMS({
     url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
     params: {
-    'LAYERS': 'rural_buildings_wgs84'
+    'LAYERS': 'APAlayers:rural_buildings_wgs84'
     },
     serverType: 'geoserver'
     });
 var districts = new ol.source.ImageWMS({
     url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
     params: {
-    'LAYERS': 'districts_wgs84'
+    'LAYERS': 'APAlayers:districts_wgs84'
     },
     serverType: 'geoserver'
     });
 var railroads = new ol.source.ImageWMS({
     url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
     params: {
-    'LAYERS': 'railroads_wgs84'
+    'LAYERS': 'APAlayers:railroads_wgs84'
     },
     serverType: 'geoserver'
     });
     var roads_all = new ol.source.ImageWMS({
         url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
         params: {
-        'LAYERS': 'roads_all_wgs84'
+        'LAYERS': 'APAlayers:roads_all_wgs84'
         },
         serverType: 'geoserver'
         });
@@ -253,7 +253,3 @@ var public_buildings = new ol.source.ImageWMS({
             map.removeLayer(layers2[layerIndex]);
         }
        }
-
-
-
-  
