@@ -253,3 +253,7 @@ var public_buildings = new ol.source.ImageWMS({
             map.removeLayer(layers2[layerIndex]);
         }
        }
+
+
+
+  
