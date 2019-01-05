@@ -152,6 +152,7 @@ var public_buildings = new ol.source.ImageWMS({
 
       var map = new ol.Map({
         layers: [bingMapsAerial,t0, drawGeometries],
+        projection: 'EPSG:4326',
         controls: ol.control.defaults({
           attributionOptions:
           ({
@@ -220,24 +221,50 @@ var public_buildings = new ol.source.ImageWMS({
            onChange();
        }
 
-    // var map = new ol.Map({
-    //   target: 'map',
-    //   layers: layers2,
-    //   view: new ol.View({
-    //     center: ol.proj.fromLonLat([13.41, 55.55]),
-    //     zoom: 10
-    //   })
-    // });
 
-    // var map = new ol.Map({
-    //     layers: bingMapsRoad,
-    //     target: 'map',
-    //     view: new ol.View({
-    //       center: ol.proj.transform([6.562783, 46.517814], 'EPSG:4326', 'EPSG:3857'),
-    //       zoom: 13
-    //     })
-    //   });
-    //
+ // Attributes
+    function getGeomFeature()  {
+
+            var select = new ol.interaction.Select();
+
+            select.getFeatures().on("add", function (e) {
+
+                var feature = e.element; //the feature selected
+                var geomType = feature.getGeometry().getType();
+                var string = 'Type: ' + geomType;
+                var coord = feature.getGeometry().getCoordinates();
+                if (geomType == 'Circle') {
+                    string += '\n Radius: ' + feature.getGeometry().getRadius();
+                    string += '\n Center coordinate: \n        E              N ' + feature.getGeometry().getCenter();
+                }
+                if (geomType == 'Polygon') {
+                    string += '\n Area: ' + feature.getGeometry().getArea()+
+                    '\n Coordinates: \n        E              N  ';
+                    for (var i = 0; i < coord[0].length; i++){
+                        string += '\n ' + (coord[0])[i];
+                    }
+                }
+                if (geomType == 'LineString') {
+                    string +=  '\n Length: ' + feature.getGeometry().getLength()
+                    +'\n Coordinates: \n        E              N  ';
+                    for (var i = 0; i < coord[0].length; i++){
+                        string += '\n ' + (coord[i]);
+                    }
+                }
+                if (geomType == 'Point') {
+                    string +=  '\n Coordinates: \n        E              N  ' + feature.getGeometry().getCoordinates();
+                }
+
+                document.getElementById('attributes').innerHTML = string; // add type in textbox
+
+                //var length = feature.getGeometry().getLength();
+                //document.getElementById('attributes').innerHTML = '&nbsp;' + length
+                });
+
+                map.addInteraction(select);
+    }
+    getGeomFeature();
+
 
     function removeGeometries() {sourceDraw.clear(true);}
     function zoomToGeometries(){

@@ -85,6 +85,8 @@
     <title>OpenLayers example</title>
   </head>
   <body>
+      <textarea id="attributes" rows="10" cols="40"></textarea>
+
       <div class="header-centered">
           <h2>Map over Lund</h2>
       </div>
@@ -99,7 +101,6 @@
                     <a href="#line"  class="material-icons" onclick="setGeometry('LineString')"  style="font-size:36px">linear_scale</a>
                     <a href="#point" class="far fa-dot-circle" onclick="setGeometry('Point')"  style="font-size:36px"></a>
                     <a href="#clear" class="fas fa-eraser" onclick="removeGeometries()"  style="font-size:36px"></a>
-                    <a href="#point" class="far fa-dot-circle" onclick="setGeometry('Measure')"  style="font-size:36px"></a>
                 </div>
             </li>
             <li class="dropdown">
