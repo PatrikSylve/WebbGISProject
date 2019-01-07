@@ -235,8 +235,10 @@ var public_buildings = new ol.source.ImageWMS({
                 var coord = feature.getGeometry().getCoordinates();
                 if (geomType == 'Circle') {
                     string += '\n Radius: ' + feature.getGeometry().getRadius()*distortion;
-                    string += '\n Center coordinate: \n        Lon              Lat ' + feature.getGeometry().getCenter();
-                }
+                    var temp = feature.getGeometry().getCenter();
+                    string += '\n Center coordinates: \n Lon:' + temp[0];
+                    string += '\n Lat:' + temp[1];
+                    }
                 if (geomType == 'Polygon') {
                     string += '\n Area: ' + feature.getGeometry().getArea()*distortion*distortion +
                     '\n Coordinates: \n        Lon              Lat  ';
@@ -248,12 +250,15 @@ var public_buildings = new ol.source.ImageWMS({
                     string +=  '\n Length: ' + feature.getGeometry().getLength()*distortion
                     +'\n Coordinates: \n        Lon              Lat  ';
                     for (var i = 0; i < coord[0].length; i++){
-                        string += '\n ' + (coord[i]);
+                        string += '\n Lon' + (coord[i])[0];
+                        string += '\n Lat' + (coord[i])[0];
+                        console.log(coord);
                     }
                 }
                 if (geomType == 'Point') {
-
-                    string +=  '\n Coordinates: \n        Lon              Lat  ' + feature.getGeometry().getCoordinates();
+                    temp = feature.getGeometry().getCoordinates();
+                    string += '\n Center coordinates: \n Lon:' + temp[0];
+                    string += '\n Lat:' + temp[1];
                 }
 
                 document.getElementById('attributes').innerHTML = string; // add type in textbox
