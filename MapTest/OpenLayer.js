@@ -241,19 +241,26 @@ var public_buildings = new ol.source.ImageWMS({
                     }
                 if (geomType == 'Polygon') {
                     string += '\n Area: ' + feature.getGeometry().getArea()*distortion*distortion +
-                    '\n Coordinates: \n        Lon              Lat  ';
+                    '\n Coordinates: \n';
+                    var point = 0;
                     for (var i = 0; i < coord[0].length; i++){
-                        string += '\n ' + (coord[0])[i];
+                        point = i+1;
+                        string += '\n Point: '+ point + '\n Lon' + (coord[0])[i][0] + '\n Lat' + (coord[0])[i][1];
                     }
                 }
                 if (geomType == 'LineString') {
                     string +=  '\n Length: ' + feature.getGeometry().getLength()*distortion
-                    +'\n Coordinates: \n        Lon              Lat  ';
-                    for (var i = 0; i < coord[0].length; i++){
-                        string += '\n Lon' + (coord[i])[0];
-                        string += '\n Lat' + (coord[i])[0];
+                    +'\n Coordinates: \n ';
+                    var point = 0;
+
+                        string += 'Start point:';
+                        string += '\n Lon: ' + (coord[0])[0];
+                        string += '\n Lat: ' + (coord[0])[1];
+                        string += '\n End point: ';
+                        string += '\n Lon: ' + (coord[1])[0];
+                        string += '\n Lat: ' + (coord[1])[1];
                         console.log(coord);
-                    }
+
                 }
                 if (geomType == 'Point') {
                     temp = feature.getGeometry().getCoordinates();
@@ -261,7 +268,7 @@ var public_buildings = new ol.source.ImageWMS({
                     string += '\n Lat:' + temp[1];
                 }
 
-                document.getElementById('attributes').innerHTML = string; // add type in textbox
+                document.getElementById('info').innerHTML = string; // add type in textbox
 
                 //var length = feature.getGeometry().getLength();
                 //document.getElementById('attributes').innerHTML = '&nbsp;' + length
