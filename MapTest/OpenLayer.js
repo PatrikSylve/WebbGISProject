@@ -235,24 +235,25 @@ var public_buildings = new ol.source.ImageWMS({
                 var coord = feature.getGeometry().getCoordinates();
                 if (geomType == 'Circle') {
                     string += '\n Radius: ' + feature.getGeometry().getRadius()*distortion;
-                    string += '\n Center coordinate: \n        E              N ' + feature.getGeometry().getCenter();
+                    string += '\n Center coordinate: \n        Lon              Lat ' + feature.getGeometry().getCenter();
                 }
                 if (geomType == 'Polygon') {
                     string += '\n Area: ' + feature.getGeometry().getArea()*distortion*distortion +
-                    '\n Coordinates: \n        E              N  ';
+                    '\n Coordinates: \n        Lon              Lat  ';
                     for (var i = 0; i < coord[0].length; i++){
                         string += '\n ' + (coord[0])[i];
                     }
                 }
                 if (geomType == 'LineString') {
                     string +=  '\n Length: ' + feature.getGeometry().getLength()*distortion
-                    +'\n Coordinates: \n        E              N  ';
+                    +'\n Coordinates: \n        Lon              Lat  ';
                     for (var i = 0; i < coord[0].length; i++){
                         string += '\n ' + (coord[i]);
                     }
                 }
                 if (geomType == 'Point') {
-                    string +=  '\n Coordinates: \n        E              N  ' + feature.getGeometry().getCoordinates();
+
+                    string +=  '\n Coordinates: \n        Lon              Lat  ' + feature.getGeometry().getCoordinates();
                 }
 
                 document.getElementById('attributes').innerHTML = string; // add type in textbox
