@@ -224,7 +224,7 @@ var public_buildings = new ol.source.ImageWMS({
 
  // Attributes
     function getGeomFeature()  {
-
+            const distortion = 0.5683;
             var select = new ol.interaction.Select();
 
             select.getFeatures().on("add", function (e) {
@@ -234,18 +234,18 @@ var public_buildings = new ol.source.ImageWMS({
                 var string = 'Type: ' + geomType;
                 var coord = feature.getGeometry().getCoordinates();
                 if (geomType == 'Circle') {
-                    string += '\n Radius: ' + feature.getGeometry().getRadius();
+                    string += '\n Radius: ' + feature.getGeometry().getRadius()*distortion;
                     string += '\n Center coordinate: \n        E              N ' + feature.getGeometry().getCenter();
                 }
                 if (geomType == 'Polygon') {
-                    string += '\n Area: ' + feature.getGeometry().getArea()+
+                    string += '\n Area: ' + feature.getGeometry().getArea()*distortion*distortion +
                     '\n Coordinates: \n        E              N  ';
                     for (var i = 0; i < coord[0].length; i++){
                         string += '\n ' + (coord[0])[i];
                     }
                 }
                 if (geomType == 'LineString') {
-                    string +=  '\n Length: ' + feature.getGeometry().getLength()
+                    string +=  '\n Length: ' + feature.getGeometry().getLength()*distortion
                     +'\n Coordinates: \n        E              N  ';
                     for (var i = 0; i < coord[0].length; i++){
                         string += '\n ' + (coord[i]);
