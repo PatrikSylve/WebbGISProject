@@ -1,16 +1,16 @@
 //WMS sources
 var public_buildings = new ol.source.ImageWMS({
-url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
-params: {
-'LAYERS': 'APAlayers:public_buildings_wgs84'
-},
-serverType: 'geoserver'
-});
+    url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+    params: {
+        'LAYERS': 'APAlayers:public_buildings_wgs84'
+    },
+    serverType: 'geoserver'
+    });
 var roads_highway = new ol.source.ImageWMS({
-url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
-params: {
-'LAYERS': 'APAlayers:roads_highway_wgs84'
-     },
+    url: ' http://stark.nateko.lu.se:8080/geoserver/wms',
+    params: {
+        'LAYERS': 'APAlayers:roads_highway_wgs84'
+    },
      serverType: 'geoserver'
      });
 var adresses = new ol.source.ImageWMS({
@@ -115,34 +115,6 @@ var public_buildings = new ol.source.ImageWMS({
 
       t0 = new ol.layer.Tile({
         source: new ol.source.OSM()
-      })
-
-      t1 = new ol.layer.Image({
-        source: public_buildings
-      })
-
-      t2 = new ol.layer.Image({
-      source: roads_highway
-      })
-
-      t3 = new ol.layer.Image({
-      source: adresses
-      })
-
-      t4 = new ol.layer.Image({
-      source: roads_throug
-      })
-
-      t5 = new ol.layer.Image({
-      source: rural_buildings
-      })
-
-      t6 = new ol.layer.Image({
-      source: railroads
-      })
-
-      t7 = new ol.layer.Image({
-      source: roads_all
       })
 
       var sourceDraw =  new ol.source.Vector();
